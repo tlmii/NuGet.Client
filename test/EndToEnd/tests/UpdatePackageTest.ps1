@@ -554,6 +554,9 @@ function Test-UpdatePackageMissingPackageNoConsent {
 }
 
 function Test-UpdatePackageInAllProjects {
+    [SkipTest('F# targets moved')]
+    param()
+
     # Arrange
     $p1 = New-FSharpLibrary
     $p2 = New-WebApplication
@@ -632,6 +635,7 @@ function Test-UpdateAllPackagesInSolution {
 }
 
 function Test-UpdatePackageOnAnFSharpProjectWithMultiplePackages {
+    [SkipTest('F# targets moved')]
     param(
         $context
     )

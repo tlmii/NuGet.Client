@@ -316,6 +316,9 @@ function Test-TabExpansionForProjectsReturnsBothUniqueNamesAndSafeNames {
 }
 
 function Test-TabExpansionWorksWithOneProject { 
+    [SkipTest('F# targets moved')]
+    param()
+
     # Arrange
     $f = New-FSharpLibrary 'ProjectA'
 
