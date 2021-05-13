@@ -181,9 +181,6 @@ function Test-GetPackageForProjectReturnsCorrectPackages2 {
 }
 
 function Test-GetPackageForFSharpProjectReturnsCorrectPackages {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpConsoleApplication
 
@@ -199,9 +196,6 @@ function Test-GetPackageForFSharpProjectReturnsCorrectPackages {
 }
 
 function Test-GetPackageForFSharpProjectReturnsCorrectPackages2 {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpConsoleApplication
 

@@ -429,7 +429,6 @@ function Test-InstallPackageWithWebConfigDebugChanges {
 }
 
 function Test-FSharpSimpleInstallWithContentFiles {
-    [SkipTest('F# targets moved')]
     param(
         $context
     )
@@ -448,9 +447,6 @@ function Test-FSharpSimpleInstallWithContentFiles {
 }
 
 function Test-FSharpSimpleWithAssemblyReference {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpLibrary
 
@@ -493,9 +489,6 @@ function Test-AddBindingRedirectToWebsiteWithNonExistingOutputPath {
 }
 
 function Test-InstallCanPipeToFSharpProjects {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpLibrary
 
@@ -629,7 +622,6 @@ function Test-InstallPackageWithResourceAssemblies {
 }
 
 function Test-InstallPackageWithGacReferencesIntoMultipleProjectTypes {
-    [SkipTest('F# targets moved')]
     param(
         $context
     )

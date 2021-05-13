@@ -120,9 +120,6 @@ function Test-UninstallPackageWithNestedContentFiles {
 }
 
 function Test-SimpleFSharpUninstall {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpLibrary
 
@@ -140,9 +137,6 @@ function Test-SimpleFSharpUninstall {
 }
 
 function Test-FSharpDependentPackageUninstall {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p = New-FSharpLibrary
     $p | Install-Package -Source $context.RepositoryRoot PackageWithDependencyOnPrereleaseTestPackage -FileConflictAction Overwrite
@@ -244,9 +238,6 @@ function UninstallSpecificPackageThrowsIfNotInstalledInProject {
 }
 
 function Test-UninstallSpecificVersionOfPackage {
-    [SkipTest('F# targets moved')]
-    param()
-
     # Arrange
     $p1 = New-ClassLibrary
     $p2 = New-FSharpLibrary
