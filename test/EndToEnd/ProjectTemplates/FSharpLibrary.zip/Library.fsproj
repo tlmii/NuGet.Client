@@ -45,8 +45,8 @@
     <Compile Include="Module1.fs" />
     <None Include="Script.fsx" />
   </ItemGroup>
-    <PropertyGroup Condition=" '$(FSharpTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets') ">
-    <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+  <PropertyGroup Condition=" '$(FSharpTargetsPath)' == ''"><!-- AND Exists('$(VsInstallRoot)\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools\Microsoft.FSharp.targets') "> -->
+    <FSharpTargetsPath>$(VsInstallRoot)\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools\Microsoft.FSharp.targets</FSharpTargetsPath>
   </PropertyGroup>
   <Import Project="$(FSharpTargetsPath)" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

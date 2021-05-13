@@ -437,7 +437,7 @@ function Test-FSharpSimpleInstallWithContentFiles {
     $p = New-FSharpLibrary
 
     # Act
-    Install-Package jquery -Version 1.5 -Project $p.Name -Source $context.RepositoryPath
+    Install-Package jquery -Version 1.5 -Project $p.Name -Source $context.RepositoryRoot
 
     # Assert
     Assert-Package $p jquery
@@ -451,7 +451,7 @@ function Test-FSharpSimpleWithAssemblyReference {
     $p = New-FSharpLibrary
 
     # Act
-    Install-Package Antlr -Project $p.Name -Source $context.RepositoryPath
+    Install-Package Antlr -Project $p.Name -Source $context.TestRoot
 
     # Assert
     Assert-Package $p Antlr
