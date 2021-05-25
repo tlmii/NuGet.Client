@@ -78,6 +78,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Interop" />
     <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" />
     <PackageReference Include="Microsoft.VisualStudio.Utilities" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" />
     <PackageReference Include="Microsoft.VisualStudio.VCProjectEngine" />
     <PackageReference Include="Newtonsoft.Json" NoWarn="NU1605" />
     <PackageReference Include="VsWebSite.Interop" />
