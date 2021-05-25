@@ -80,7 +80,7 @@ Function Set-RtmLabel {
 
 Set-RtmLabel -BuildRTM $BuildRTM
 
-$msbuildExe = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\bin\msbuild.exe'
+$msbuildExe = 'C:\Program Files\Microsoft Visual Studio\2022\Preview\MSBuild\Current\bin\msbuild.exe'
 
 # Disable strong name verification of common public keys so that scenarios like building the VSIX or running unit tests
 # will not fail because of strong name verification errors.
