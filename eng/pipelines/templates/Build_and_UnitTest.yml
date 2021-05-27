@@ -167,7 +167,7 @@ steps:
   continueOnError: "false"
   inputs:
     solution: "build\\build.proj"
-    msbuildVersion: "17.0"
+    msbuildVersion: "16.0"
     configuration: "$(BuildConfiguration)"
     msbuildArguments: "/t:CoreUnitTests;UnitTestsVS /p:BuildRTM=$(BuildRTM) /p:BuildNumber=$(BuildNumber) /p:TestResultOutputFormat=xml /p:SkipILMergeOfNuGetExe=true"
   condition: "and(succeeded(), eq(variables['BuildRTM'], 'true'), not(eq(variables['IsOfficialBuild'], 'true')))"
