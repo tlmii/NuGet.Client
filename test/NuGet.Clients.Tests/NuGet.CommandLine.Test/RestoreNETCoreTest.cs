@@ -10646,6 +10646,59 @@ namespace NuGet.CommandLine.Test
             }
         }
 
+        [Fact]
+        public async Task Restore_WithCommonTransitiveDependency_DownloadsOnlyOnInGlobalPackagesFolder()
+        {
+            using (var pathContext = new SimpleTestPathContext())
+            {
+                // Set up solution, project, and packages
+                var solution = new SimpleTestSolutionContext(pathContext.SolutionRoot);
+                var projectA = SimpleTestProjectContext.CreateNETCore(
+                   "A",
+                   pathContext.SolutionRoot,
+                   FrameworkConstants.CommonFrameworks.Net472);
+
+                // Set up the package and source
+                var packageX10 = new SimpleTestPackageContext("x", "1.0");
+                var packageY10 = new SimpleTestPackageContext("y", "1.0");
+
+                var packageN10 = new SimpleTestPackageContext("n", "1.0");
+                var packageN20 = new SimpleTestPackageContext("n", "2.0");
+
+                packageX10.Dependencies.Add(packageN10);
+                packageY10.Dependencies.Add(packageN20);
+
+
+                await SimpleTestPackageUtility.CreateFolderFeedV3Async(
+                     pathContext.PackageSource,
+                     PackageSaveMode.Defaultv3,
+                     packageX10,
+                     packageY10,
+                     packageN10,
+                     packageN20);
+
+                projectA.AddPackageToAllFrameworks(packageX10);
+                projectA.AddPackageToAllFrameworks(packageY10);
+
+                solution.Projects.Add(projectA);
+                solution.Create(pathContext.SolutionRoot);
+
+                // Act
+                var result = Util.RestoreSolution(pathContext);
+
+                // Assert
+                result.Success.Should().BeTrue();
+
+                var globalPackagesFolderDir = new DirectoryInfo(pathContext.UserPackagesFolder);
+                DirectoryInfo[] gpfFiles = globalPackagesFolderDir.GetDirectories();
+                gpfFiles.Should().HaveCount(3); // Only 3 packages should exist, X, Y & N.
+
+                var nFolder = gpfFiles.Where(e => e.Name.EndsWith("n")).Single();
+                var nPackagesDirectories = nFolder.GetDirectories();
+                nPackagesDirectories.Should().HaveCount(1);
+            }
+        }
+
         private static byte[] GetTestUtilityResource(string name)
         {
             return ResourceTestUtility.GetResourceBytes(
