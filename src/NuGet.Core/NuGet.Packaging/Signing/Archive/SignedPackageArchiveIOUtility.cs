@@ -55,7 +55,7 @@ namespace NuGet.Packaging.Signing
 
             byte[] buffer = ArrayPool<byte>.Shared.Rent(_bufferSize);
 
-            Stream stream = reader.BaseStream;            
+            Stream stream = reader.BaseStream;
             long currentPosition;
             while ((currentPosition = stream.Position) != position)
             {
