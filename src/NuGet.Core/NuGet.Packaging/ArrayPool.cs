@@ -3,7 +3,7 @@
 
 #if NETFRAMEWORK || NETSTANDARD2_0
 
-using System.Collections.Generic;
+using NuGet;
 
 namespace System.Buffers
 {
@@ -83,39 +83,6 @@ namespace System.Buffers
             if (array.Length <= MaxPooledArraySize)
             {
                 _pool.Free(array);
-            }
-        }
-    }
-
-    internal class SimplePool<T> where T : class
-    {
-        private readonly object _lock = new();
-        private readonly Stack<T> _values = new();
-        private readonly Func<T> _allocate;
-
-        public SimplePool(Func<T> allocate)
-        {
-            _allocate = allocate;
-        }
-
-        public T Allocate()
-        {
-            lock (_lock)
-            {
-                if (_values.Count > 0)
-                {
-                    return _values.Pop();
-                }
-
-                return _allocate();
-            }
-        }
-
-        public void Free(T value)
-        {
-            lock (_lock)
-            {
-                _values.Push(value);
             }
         }
     }
