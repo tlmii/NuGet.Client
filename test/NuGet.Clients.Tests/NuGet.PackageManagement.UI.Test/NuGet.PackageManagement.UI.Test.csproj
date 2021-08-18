@@ -34,6 +34,7 @@
     <Compile Include="Converters\DownloadCountToVisibilityConverterTests.cs" />
     <Compile Include="Converters\VersionToStringConverterTests.cs" />
     <Compile Include="ConverterTests.cs" />
+    <Compile Include="DeepLinkPackageParserTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MockedVS.cs" />
     <Compile Include="Models\PackageDependencySetMetadataTests.cs" />
