@@ -23,6 +23,8 @@ namespace NuGet.Configuration
 
         public static readonly string Package = "package";
 
+        public static readonly string CacheExpiration = "cacheExpiration";
+
         public static readonly string Clear = "clear";
 
         public static readonly string ClearTextPasswordAttribute = "clearTextPassword";

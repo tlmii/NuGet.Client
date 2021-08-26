@@ -869,6 +869,7 @@ NuGet.Packaging.Signing.CertificateType.Timestamp = 1 -> NuGet.Packaging.Signing
 NuGet.Packaging.Signing.CertificateUtility
 NuGet.Packaging.Signing.ClientPolicyContext
 NuGet.Packaging.Signing.ClientPolicyContext.AllowList.get -> System.Collections.Generic.IReadOnlyCollection<NuGet.Packaging.Signing.TrustedSignerAllowListEntry>
+NuGet.Packaging.Signing.ClientPolicyContext.CacheExpirationEnabled.get -> bool
 NuGet.Packaging.Signing.ClientPolicyContext.Policy.get -> NuGet.Common.SignatureValidationMode
 NuGet.Packaging.Signing.ClientPolicyContext.VerifierSettings.get -> NuGet.Packaging.Signing.SignedPackageVerifierSettings
 NuGet.Packaging.Signing.CommitmentTypeIndication

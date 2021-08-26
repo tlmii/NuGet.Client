@@ -25,7 +25,12 @@ namespace NuGet.Packaging.Signing
         /// </summary>
         public IReadOnlyCollection<TrustedSignerAllowListEntry> AllowList { get; }
 
-        internal ClientPolicyContext(SignatureValidationMode policy, IReadOnlyCollection<TrustedSignerAllowListEntry> allowList)
+        /// <summary>
+        /// Whether the cache expiration feature is enabled for the global package folder
+        /// </summary>
+        public bool CacheExpirationEnabled { get; }
+
+        internal ClientPolicyContext(SignatureValidationMode policy, IReadOnlyCollection<TrustedSignerAllowListEntry> allowList, bool cacheExpiration = false)
         {
             Policy = policy;
 
@@ -39,6 +44,7 @@ namespace NuGet.Packaging.Signing
             }
 
             AllowList = allowList;
+            CacheExpirationEnabled = cacheExpiration;
         }
 
         public static ClientPolicyContext GetClientPolicy(ISettings settings, ILogger logger)
@@ -55,8 +61,9 @@ namespace NuGet.Packaging.Signing
 
             var policy = SettingsUtility.GetSignatureValidationMode(settings);
             var allowList = TrustedSignersProvider.GetAllowListEntries(settings, logger);
+            var cacheExpiration = SettingsUtility.GetCacheExpirationStatus(settings);
 
-            return new ClientPolicyContext(policy, allowList);
+            return new ClientPolicyContext(policy, allowList, cacheExpiration);
         }
     }
 }

@@ -104,6 +104,23 @@ namespace NuGet.Configuration
             return SignatureValidationMode.Accept;
         }
 
+        public static bool GetCacheExpirationStatus(ISettings settings)
+        {
+            if (settings == null)
+            {
+                throw new ArgumentNullException(nameof(settings));
+            }
+
+            var cacheExpirationStatus = GetConfigValue(settings, ConfigurationConstants.CacheExpiration);
+
+            if (!string.IsNullOrEmpty(cacheExpirationStatus) && bool.TryParse(cacheExpirationStatus, result: out bool cacheExpiration))
+            {
+                return cacheExpiration;
+            }
+
+            return false;
+        }
+
         public static string GetDecryptedValueForAddItem(ISettings settings, string section, string key, bool isPath = false)
         {
             if (settings == null)

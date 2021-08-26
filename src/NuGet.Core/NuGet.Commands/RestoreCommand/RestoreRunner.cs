@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NuGet.Common;
+using NuGet.LibraryModel;
 using NuGet.ProjectModel;
 
 namespace NuGet.Commands
@@ -92,8 +93,34 @@ namespace NuGet.Commands
                 restoreSummaries.Add(restoreSummary);
             }
 
+            if (restoreRequests.First().Request.ClientPolicyContext.CacheExpirationEnabled)
+            {
+                await TouchMetadata(restoreRequests, log);
+            }
+
             // Summary
             return restoreSummaries;
+        }
+
+        private static async Task TouchMetadata(IEnumerable<RestoreSummaryRequest> restoreRequests, ILogger log)
+        {
+            var uniquePackageList = restoreRequests.SelectMany(restoreRequest => restoreRequest.Request.Project.TargetFrameworks.SelectMany(tfm => tfm.Dependencies)).Distinct();
+            var repoRoot = restoreRequests.First().Request.DependencyProviders.GlobalPackages.RepositoryRoot;
+
+            foreach (var package in uniquePackageList)
+            {
+                var packageMetadataFile = Path.Combine(repoRoot, package.Name, package.LibraryRange.VersionRange.OriginalString, ".nupkg.metadata");
+                try
+                {
+                    File.SetLastAccessTimeUtc(packageMetadataFile, DateTime.UtcNow);
+                }
+                catch (Exception ex)
+                {
+                    await log.LogAsync(RestoreLogMessage.CreateError(NuGetLogCode.NU1110,
+                        string.Format(CultureInfo.CurrentCulture, Strings.Error_CouldNotUpdateMetadataLastAccessTime,
+                        packageMetadataFile, ex.Message)));
+                }
+            }
         }
 
         /// <summary>
