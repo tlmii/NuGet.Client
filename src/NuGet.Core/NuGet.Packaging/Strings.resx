@@ -882,4 +882,26 @@ Valid from:</comment>
     <value>The {0}'s timestamping certificate is not trusted by the trust provider.</value>
     <comment>0 -Signature friendly name</comment>
   </data>
+  <data name="InvalidP7bFileExtension" xml:space="preserve">
+    <value>The file at '{0}' is invalid.  The file must be a valid PKCS #7 file with a '.p7b' extension.</value>
+    <comment>0 - file path</comment>
+  </data>
+  <data name="P7bFileNotFound" xml:space="preserve">
+    <value>The file at '{0}' was not found.</value>
+    <comment>0 - file path</comment>
+  </data>
+  <data name="ChainBuilding_UsingDefaultTrustStore" xml:space="preserve">
+    <value>X.509 certificate chain validation will use the default trust store.</value>
+  </data>
+  <data name="ChainBuilding_UsingFallbackCertificateBundle" xml:space="preserve">
+    <value>X.509 certificate chain validation will use the fallback certificate bundle at {0}.</value>
+    <comment>{0} is the file path</comment>
+  </data>
+  <data name="ChainBuilding_UsingNoCertificateBundle" xml:space="preserve">
+    <value>X.509 certificate chain validation will not have any trusted roots.  Chain building will fail with an untrusted status.</value>
+  </data>
+  <data name="ChainBuilding_UsingSystemCertificateBundle" xml:space="preserve">
+    <value>X.509 certificate chain validation will use the system certificate bundle at {0}.</value>
+    <comment>{0} is the file path</comment>
+  </data>
 </root>

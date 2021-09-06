@@ -169,6 +169,42 @@ namespace NuGet.Packaging {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to X.509 certificate chain validation will use the default trust store..
+        /// </summary>
+        internal static string ChainBuilding_UsingDefaultTrustStore {
+            get {
+                return ResourceManager.GetString("ChainBuilding_UsingDefaultTrustStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.509 certificate chain validation will use the fallback certificate bundle at {0}..
+        /// </summary>
+        internal static string ChainBuilding_UsingFallbackCertificateBundle {
+            get {
+                return ResourceManager.GetString("ChainBuilding_UsingFallbackCertificateBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.509 certificate chain validation will not have any trusted roots.  Chain building will fail with an untrusted status..
+        /// </summary>
+        internal static string ChainBuilding_UsingNoCertificateBundle {
+            get {
+                return ResourceManager.GetString("ChainBuilding_UsingNoCertificateBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.509 certificate chain validation will use the system certificate bundle at {0}..
+        /// </summary>
+        internal static string ChainBuilding_UsingSystemCertificateBundle {
+            get {
+                return ResourceManager.GetString("ChainBuilding_UsingSystemCertificateBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The commitment-type-indication attribute is invalid..
         /// </summary>
         internal static string CommitmentTypeIndicationAttributeInvalid {
@@ -624,6 +660,15 @@ namespace NuGet.Packaging {
         internal static string InvalidNuspecEntry {
             get {
                 return ResourceManager.GetString("InvalidNuspecEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file at &apos;{0}&apos; is invalid.  The file must be a valid PKCS #7 file with a &apos;.p7b&apos; extension..
+        /// </summary>
+        internal static string InvalidP7bFileExtension {
+            get {
+                return ResourceManager.GetString("InvalidP7bFileExtension", resourceCulture);
             }
         }
         
@@ -1119,6 +1164,15 @@ namespace NuGet.Packaging {
         internal static string NuGetV3ServiceIndexUrlInvalidValue {
             get {
                 return ResourceManager.GetString("NuGetV3ServiceIndexUrlInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file at &apos;{0}&apos; was not found..
+        /// </summary>
+        internal static string P7bFileNotFound {
+            get {
+                return ResourceManager.GetString("P7bFileNotFound", resourceCulture);
             }
         }
         

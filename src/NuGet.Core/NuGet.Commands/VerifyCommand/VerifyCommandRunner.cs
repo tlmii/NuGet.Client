@@ -72,6 +72,8 @@ namespace NuGet.Commands
 
                 var verifier = new PackageSignatureVerifier(verificationProviders);
 
+                X509TrustStore.Initialize(verifyArgs.Logger);
+
                 foreach (var package in packagesToVerify)
                 {
                     try

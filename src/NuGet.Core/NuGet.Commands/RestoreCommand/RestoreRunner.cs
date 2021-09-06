@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NuGet.Common;
+using NuGet.Packaging.Signing;
 using NuGet.ProjectModel;
 
 namespace NuGet.Commands
@@ -48,6 +49,8 @@ namespace NuGet.Commands
             RestoreArgs restoreContext,
             CancellationToken token)
         {
+            X509TrustStore.Initialize(restoreContext.Log);
+
             var maxTasks = GetMaxTaskCount(restoreContext);
 
             var log = restoreContext.Log;
@@ -103,6 +106,8 @@ namespace NuGet.Commands
             IEnumerable<RestoreSummaryRequest> restoreRequests,
             RestoreArgs restoreContext)
         {
+            X509TrustStore.Initialize(restoreContext.Log);
+
             var maxTasks = GetMaxTaskCount(restoreContext);
 
             var log = restoreContext.Log;

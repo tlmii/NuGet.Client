@@ -32,6 +32,8 @@ namespace NuGet.Commands
 
             var success = true;
 
+            X509TrustStore.Initialize(signArgs.Logger);
+
             X509Certificate2 cert = null;
             try
             {

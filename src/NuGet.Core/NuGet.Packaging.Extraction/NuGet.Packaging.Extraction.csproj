@@ -236,6 +236,9 @@
     <Compile Include="..\NuGet.Packaging\Signing\Timestamp\Extension.cs" Link="NuGet.Packaging\Signing\Timestamp\Extension.cs" />
     <Compile Include="..\NuGet.Packaging\Signing\TrustedSigners\ITrustedSignersProvider.cs" Link="NuGet.Packaging\Signing\TrustedSigners\ITrustedSignersProvider.cs" />
     <Compile Include="..\NuGet.Packaging\Signing\TrustedSigners\TrustedSignersProvider.cs" Link="NuGet.Packaging\Signing\TrustedSigners\TrustedSignersProvider.cs" />
+    <Compile Include="..\NuGet.Packaging\Signing\TrustStore\DefaultTrustStoreX509ChainFactory.cs" Link="NuGet.Packaging\Signing\TrustStore\DefaultTrustStoreX509ChainFactory.cs" />
+    <Compile Include="..\NuGet.Packaging\Signing\TrustStore\IX509ChainFactory.cs" Link="NuGet.Packaging\Signing\TrustStore\IX509ChainFactory.cs" />
+    <Compile Include="..\NuGet.Packaging\Signing\TrustStore\X509TrustStore.cs" Link="NuGet.Packaging\Signing\TrustStore\X509TrustStore.cs" />
     <Compile Include="..\NuGet.Packaging\Signing\Utility\RepositorySignatureInfoUtility.cs" Link="NuGet.Packaging\Signing\Utility\RepositorySignatureInfoUtility.cs" />
     <Compile Include="..\NuGet.Packaging\Signing\Utility\MarshalUtility.cs" Link="NuGet.Packaging\Signing\Utility\MarshalUtility.cs" />
     <Compile Include="..\NuGet.Packaging\Signing\Utility\CertificateUtility.cs" Link="NuGet.Packaging\Signing\Utility\CertificateUtility.cs" />
