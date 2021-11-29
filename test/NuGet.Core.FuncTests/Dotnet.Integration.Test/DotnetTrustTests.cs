@@ -152,8 +152,7 @@ namespace Dotnet.Integration.Test
             }
         }
 
-        // https://github.com/NuGet/Home/issues/11321
-        [PlatformTheory(Platform.Windows, Platform.Linux, CIOnly = true)]
+        [CIOnlyTheory]
         [InlineData(true)]
         [InlineData(false)]
         public async Task DotnetTrust_AuthorAction_RelativePathConfileFile_Succeeds(bool allowUntrustedRoot)
@@ -216,8 +215,7 @@ namespace Dotnet.Integration.Test
             }
         }
 
-        // https://github.com/NuGet/Home/issues/11321
-        [PlatformFact(Platform.Windows, Platform.Linux, CIOnly = true)]
+        [CIOnlyFact]
         public async Task DotnetTrust_AuthorAction_RelativePathConfileFile_WithoutExistingTrustedSignersSection_Succeeds()
         {
             // Arrange
@@ -274,8 +272,7 @@ namespace Dotnet.Integration.Test
             }
         }
 
-        // https://github.com/NuGet/Home/issues/11321
-        [PlatformTheory(Platform.Windows, Platform.Linux, CIOnly = true)]
+        [CIOnlyTheory]
         [InlineData(true)]
         [InlineData(false)]
         public async Task DotnetTrust_AuthorAction_AbsolutePathConfileFile_Succeeds(bool allowUntrustedRoot)
@@ -480,8 +477,7 @@ namespace Dotnet.Integration.Test
             }
         }
 
-        // https://github.com/NuGet/Home/issues/11321
-        [PlatformFact(Platform.Windows, Platform.Linux, CIOnly = true)]
+        [CIOnlyFact]
         public async Task DotnetTrust_RemoveAction_Succeeds()
         {
             // Arrange
@@ -525,8 +521,7 @@ namespace Dotnet.Integration.Test
             }
         }
 
-        // https://github.com/NuGet/Home/issues/11321
-        [PlatformFact(Platform.Windows, Platform.Linux, CIOnly = true)]
+        [CIOnlyFact]
         public async Task DotnetTrust_RemoveAction_WrongName_NoChange()
         {
             // Arrange
