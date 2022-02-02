@@ -1,9 +1,10 @@
-﻿<Project>
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'NuGet.sln'))\build\common.props" />
+<Project>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'README.md'))\build\common.props" />
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
-    <TargetFrameworks>$(TargetFrameworksExeForSigning)</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(IsVsixBuild)' != 'true' ">$(TargetFrameworksExeForSigning)</TargetFrameworks>
+    <TargetFramework Condition=" '$(IsVsixBuild)' == 'true' ">$(NETFXTargetFramework)</TargetFramework>
     <OutputType>Exe</OutputType>
     <Shipping>true</Shipping>
     <PackProject>true</PackProject>
@@ -17,11 +18,6 @@
     <ServerGarbageCollection>true</ServerGarbageCollection>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <UsePublicApiAnalyzer>false</UsePublicApiAnalyzer>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(IsVsixBuild)' == 'true' ">
-    <TargetFrameworks />
-    <TargetFramework>$(NETFXTargetFramework)</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
