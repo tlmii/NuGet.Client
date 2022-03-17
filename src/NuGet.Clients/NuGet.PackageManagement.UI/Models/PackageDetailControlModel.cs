@@ -8,6 +8,7 @@ using System.Threading;
 using Microsoft.ServiceHub.Framework;
 using NuGet.Packaging.Core;
 using NuGet.Versioning;
+using NuGet.VisualStudio;
 using NuGet.VisualStudio.Internal.Contracts;
 using Task = System.Threading.Tasks.Task;
 
@@ -35,6 +36,7 @@ namespace NuGet.PackageManagement.UI
             Func<PackageItemViewModel> getPackageItemViewModel)
         {
             // Set InstalledVersion before fetching versions list.
+            PackageLevel = searchResultPackage.PackageLevel;
             InstalledVersion = searchResultPackage.InstalledVersion;
 
             await base.SetCurrentPackageAsync(searchResultPackage, filter, getPackageItemViewModel);
@@ -45,6 +47,7 @@ namespace NuGet.PackageManagement.UI
             {
                 return;
             }
+            PackageLevel = searchResultPackage.PackageLevel;
             InstalledVersion = searchResultPackage.InstalledVersion;
             SelectedVersion.IsCurrentInstalled = InstalledVersion == SelectedVersion.Version;
         }
@@ -199,6 +202,19 @@ namespace NuGet.PackageManagement.UI
                 _installedVersion = value;
                 OnPropertyChanged(nameof(InstalledVersion));
                 OnPropertyChanged(nameof(IsSelectedVersionInstalled));
+                OnPropertyChanged(nameof(IsInstalledVersionTopLevel));
+            }
+        }
+
+        private PackageLevel _packageLevel;
+
+        public PackageLevel PackageLevel
+        {
+            get { return _packageLevel; }
+            private set
+            {
+                _packageLevel = value;
+                OnPropertyChanged(nameof(PackageLevel));
             }
         }
 
@@ -206,6 +222,7 @@ namespace NuGet.PackageManagement.UI
         {
             base.OnSelectedVersionChanged();
             OnPropertyChanged(nameof(IsSelectedVersionInstalled));
+            OnPropertyChanged(nameof(IsInstalledVersionTopLevel));
         }
 
         public bool IsSelectedVersionInstalled
@@ -215,6 +232,14 @@ namespace NuGet.PackageManagement.UI
                 return SelectedVersion != null
                     && InstalledVersion != null
                     && SelectedVersion.Version == InstalledVersion;
+            }
+        }
+
+        public bool IsInstalledVersionTopLevel
+        {
+            get
+            {
+                return InstalledVersion != null && PackageLevel == PackageLevel.TopLevel;
             }
         }
 
