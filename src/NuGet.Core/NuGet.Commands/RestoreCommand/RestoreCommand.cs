@@ -583,7 +583,7 @@ namespace NuGet.Commands
             var isLockFileValid = false;
             var success = true;
 
-            var isLockedMode = _request.Project.RestoreMetadata.RestoreLockProperties.RestoreLockedMode;
+            var isLockedMode = _request.Project.RestoreMetadata?.RestoreLockProperties?.RestoreLockedMode ?? false;
             if (isLockedMode && _request.RestoreForceEvaluate)
             {
                 success = false;
