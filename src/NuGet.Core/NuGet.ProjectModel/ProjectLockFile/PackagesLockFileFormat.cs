@@ -239,7 +239,9 @@ namespace NuGet.ProjectModel
             {
                 var ordered = dependency.Dependencies.OrderBy(dep => dep.Id, StringComparer.Ordinal);
 
-                json[DependenciesProperty] = JsonUtility.WriteObject(ordered, JsonUtility.WritePackageDependency);
+                // For dependencies from projects we dont have requested or resolved property, we write the full version range
+                json[DependenciesProperty] = JsonUtility.WriteObject(ordered, dependency.Type == PackageDependencyType.Project ?
+                    JsonUtility.WritePackageDependency : JsonUtility.WritePackageDependencyWithLegacyString);
             }
 
             return new JProperty(dependency.Id, json);
