@@ -257,10 +257,10 @@ namespace NuGet.ProjectModel.Test
         }
 
         [Theory]
-        [InlineData("1.0.0", "1.0.0")]
-        [InlineData("1.0.0-beta", "1.0.0-beta")]
-        [InlineData("1.0.0-*", "1.0.0-*")]
-        [InlineData("1.0.*", "1.0.*")]
+        [InlineData("1.0.0", "[1.0.0, )")]
+        [InlineData("1.0.0-beta", "[1.0.0-beta, )")]
+        [InlineData("1.0.0-*", "[1.0.0-*, )")]
+        [InlineData("1.0.*", "[1.0.*, )")]
         [InlineData("(1.0.*, )", "(1.0.*, )")]
         public void Test_WritePackageDependency(string version, string expectedVersion)
         {
