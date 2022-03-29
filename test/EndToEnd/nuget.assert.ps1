@@ -327,7 +327,7 @@ function Get-ProjectToolsCacheFilePath {
     $includeValue = $node.Attributes['Include'].Value
     $versionValue = $node.Attributes['Version'].Value
 
-    return "$($home)\.nuget\packages\.tools\$($includeValue)\$($versionValue)\netcoreapp2.0\$($includeValue).nuget.cache"      
+    return Join-Path $home (Join-Path ".nuget" (Join-Path "packages" (Join-Path ".tools" (Join-Path $includeValue (Join-Path $versionValue (Join-Path "netcoreapp2.0" "$($includeValue).nuget.cache"))))))
 }
 
 function Get-ToolsReference {
